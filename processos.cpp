@@ -169,7 +169,11 @@ int main(){
                 cout << temp << " Filho 1 - vou ligar o LED VERMELHO\n";
 
                 //escrever no filho_1.txt o texto acima
-                filho1 << temp << " Filho 1 - vou ligar o LED VERMELHO\n";
+                string tempo = "";
+                for(unsigned int i = 0; i < temp.length() - 1; i++){
+                    tempo += temp[i];
+                }
+                filho1 << tempo << " Filho 1 - vou ligar o LED VERMELHO\n";
 
             }
             filho1.close();
@@ -185,7 +189,7 @@ int main(){
                     case -1:       // erro
                    exit(1);
                 case 0:        // filho2
-                   filho1.open("filho_2.txt");
+                   filho2.open("filho_2.txt");
                    for (int i=0;i<10;i++){
                       sleep(3);
                       //LIGA LED VERDE
@@ -197,7 +201,11 @@ int main(){
                       cout << temp << " Filho 2 - vou ligar o LED VERDE\n";
 
                       //escrever no filho_2.txt o texto acima
-                      filho2 << temp << " Filho 2 - vou ligar o LED VERDE\n";
+                      string tempo = "";
+                      for(unsigned int i = 0; i < temp.length() - 1; i++){
+                          tempo += temp[i];
+                      }
+                      filho2 << tempo << " Filho 2 - vou ligar o LED VERDE\n";
 
                    }
                    filho2.close();
@@ -224,7 +232,11 @@ int main(){
                               cout << temp << " Filho 3 - vou ligar o LED AZUL\n";
 
                               //escrever no filho_3.txt o texto acima
-                              filho3 << temp << " Filho 3 - vou ligar o LED AZUL\n";
+                              string tempo = "";
+                              for(unsigned int i = 0; i < temp.length() - 1; i++){
+                                  tempo += temp[i];
+                              }
+                              filho3 << tempo << " Filho 3 - vou ligar o LED AZUL\n";
 
                            }
                            filho3.close();
@@ -248,11 +260,15 @@ int main(){
                                           time (&rawtime);
                                           string temp = ctime(&rawtime);
                                           temp[temp.length()-1] = '\0';
-                                          cout << temp << " Filho4 - valor do potenciometro é " << readAnalog(1) << endl;
+                                          cout << temp << " Filho 4 - valor do potenciometro é " << readAnalog(1) << endl;
 
                                           //escrever no filho_4.txt o texto acima
 
-                                          filho4 << temp << " Filho 4 - valor do potenciometro " << readAnalog(1) << endl;
+                                          string tempo = "";
+                                          for(unsigned int i = 0; i < temp.length() - 1; i++){
+                                              tempo += temp[i];
+                                          }
+                                          filho4 << tempo << " Filho 4 - valor do potenciometro " << readAnalog(1) << endl;
 
                                       }
                                       filho4.close();
