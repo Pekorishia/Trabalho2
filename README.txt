@@ -1,4 +1,3 @@
-
 ////////////////////////NEEDED FILES
 
 -----------------------------SDK Texas Instruments---------------------------------
@@ -34,10 +33,10 @@ $./install.sh
 
 ////////////////////////HOW IT WORKS
 
-Create a new QT project as QT Console Application and name it as you wish. Just as an example, we
-will use here the project name: "trabalho2".
 
-After creating the project, open the "trabalho2".pro and change the last config (CONFIG -= app_bundle) to:
+Create a new QT project as QT Console Application and name it as you wish. 
+
+After creating the project, open the "projectName".pro and change the last config (CONFIG -= app_bundle) to:
 CONFIG += c++11
 
 after that, right click into your project file name and go to "Add Existing Directory...".
@@ -50,7 +49,32 @@ Then open the directory /DEV/BlackLib/v3_0/ and select all these four files:
    -BlackDef.h
    -BlackErr.h
 
+Go to the link below and copy the "processos.cpp" code to the main.cpp in the project, and download the compila.sh to the project directory.
+https://github.com/Pekorishia/Trabalho2
+
+Open the compila.sh and change the "potenciometro" in:
+"printf "\n\rCopiando para a BBB (em /home/debian)..."
+sshpass -p 'temppwd' scp potenciometro debian@192.168.7.2:~"
+
+to:
+"printf "\n\rCopiando para a BBB (em /home/debian)..."
+sshpass -p 'temppwd' scp projectName debian@192.168.7.2:~"
+
+
+Check if the path to /BlackGPIO.h in the main.cpp is the same as in the "projectname".pro
+If is different, copy tha path in "projectname".pro and paste it in the main.cpp #include "newpath"
+
+Open the Linux terminal and go to the project directory and type:
+$chmod +x compila.sh
+$./compila.sh
+
+This will enter the BeagleBone, then type:
+./"projectname"
+
+and it will work
+
 /////////////////////////ATENTION!!!
+
 Every time that you are going to execute this project, type these code into your BeagleBone before
 executing:
 $ sudo sh -c "echo 'BB-ADC' > /sys/devices/platform/bone_capemgr/slots"
